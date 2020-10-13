@@ -521,12 +521,12 @@ skins.components[2].checkbox = function(fn)
    rand = skins.id
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function cbmousedownsdb]]..rand..[[(sender, button, x, y)
-         if sender.wordwrap == false then
-            sender.wordwrap = true
-            gotoColor2(sender,{113,140,236},20)
+         if ]]..fn.name..".cbboxsdb"..rand..[[.wordwrap == false then
+            ]]..fn.name..".cbboxsdb"..rand..[[.wordwrap = true
+            gotoColor2(]]..fn.name..".cbboxsdb"..rand..[[,{113,140,236},20)
          else
             sender.wordwrap = false
-            gotoColor2(sender,{30,30,30},20)
+            gotoColor2(]]..fn.name..".cbboxsdb"..rand..[[,{30,30,30},20)
          end
 end]]
 

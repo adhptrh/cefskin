@@ -1,13 +1,13 @@
 local a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"function base64_encode(b)return(b:gsub(".",function(c)local d,a="",c:byte()for e=8,1,-1 do d=d..(a%2^e-a%2^(e-1)>0 and"1"or"0")end;return d end).."0000"):gsub("%d%d%d?%d?%d?%d?",function(c)if#c<6 then return""end;local f=0;for e=1,6 do f=f+(c:sub(e,e)=="1"and 2^(6-e)or 0)end;return a:sub(f+1,f+1)end)..({"","==","="})[#b%3+1]end;function base64_decode(b)b=string.gsub(b,"[^"..a.."=]","")return b:gsub(".",function(c)if c=="="then return""end;local d,g="",a:find(c)-1;for e=6,1,-1 do d=d..(g%2^e-g%2^(e-1)>0 and"1"or"0")end;return d end):gsub("%d%d%d?%d?%d?%d?%d?%d?",function(c)if#c~=8 then return""end;local f=0;for e=1,8 do f=f+(c:sub(e,e)=="1"and 2^(8-e)or 0)end;return string.char(f)end)end
 
-fdata = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPEZvcm1EYXRhPgogIDxVREYxIENsYXNzPSJUQ0VGb3JtIiBFbmNvZGluZz0iQXNjaWk4NSI+amEwdm0pOlpyIWxKPVJ4WjRaUCVWI31zRU5RZlRXWk4wUDpDdDlbbEw1Sy5aam9Wbn0sTDdhT0ooNj8oTXhLUWsyW0F4eG10ZXpBOz1GTkxmLD1TQCglYn1Fb1N6Sy9nOEJIbDlyKFgkVyF1SkAua2UpSnolXnFOODdENngsUWkqWVZwc3U5dFdUaSU3RFlVQF5zN3cjNk9KZjM7R31zWWFnQiUvUDtSIXpqe2F0WDlzNmp3XUM2WjlPZC45WChOTVtzUikuU0R0bixYS2VNKGZAeE9jRzFXdGVUUEJGL0VwWjYqRzJYYipCI2VTcT1hPUY4WCw1a3R1UEVtMitPMi97WkYlTmRJeEdYWmJeLUJHc3dteTV7dmkpZiMlXWxDcztndCk6PU4/LClhSEJVMzRaWjZhdW1OV305LmZpe1FYeiMsRWhmS2l3NmpSbSR6IWoqSS03ZV1SLU03e0YxRVpBWiEwJEJoISpnTk56SjB9dlIoekVOXjEhdl8tWVQ4bDVYZ29zeWN3ZkNqSCozVmtUaUo6eDNIR3N0ZEBsRzd3Tk1GWE5ZVzQvSFF7fWtiQ25UT0UzaGo4UygkZ2hAdSVjTjljWFliRHI6MlRjMSVBPVJqbXFQbkV2MkIzZTYuV155STIxbTVNMmI0bmF0c0xPSVMuQFBjKnMuMjVrSW9oWCNCK0N7KFd5I0BOZyxxKzErWStRdFB9bH1wcjMvc2gjZnpNPWNqJHNEN3ExRyxqO3MoYkw7TmVxdGg2UGw3enZTUmNjdDRWI2YvMkx0Z2okP3RlQEVdXlNLLkBTYXtteEg2QS5SQjhnZlRqXWhTaVBOekdGQkNuOEpXT0Z9dU11RlcqTStNMGRyR0VhRV9BNSNPVW4kZWtNZm9dRytLb31YOHNFdmtYdl5WeEBqXTwvVURGMT4KPC9Gb3JtRGF0YT4="
+fdata = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPEZvcm1EYXRhPgogIDxjZWZza2luIENsYXNzPSJUQ0VGb3JtIiBFbmNvZGluZz0iQXNjaWk4NSI+b200VDgpOlpmdmxjcjlaVUpyeW9WKVk9a0VWT0tGWlE2PUpUM1RJJDVFRjZ7W1l4KXdPWDZ7cGlKNihAbUgoYy1beiNUeTJeeFI7UFNSW1JMcml2PzprSS5yW256TW00RkcjRmVnL3U4R0BXdThJKVF1aUtCLVVmbnlLJDpqaEVRSkBxQmcocnJMQz1lZypiYS0pXlpxOCRiKWZuTkxYcj9fKS1AJCtZelhdal5fci5iWUNyekdaeFVoUkZAWkd2dCRHK0tJRlEjRDVSXXAsQlE4Ki9LKTdTZkVSNlFOa2hdd2h6OSNESXVqUF1GSlRHcjc3dEEwPW9kX14weyh7MHUzOWptTEE1ZTMuVj1KWGNVW28zVjNdMjFxbHA5ITleX2lxaExUOHFaQDt7OHghSy95QD1PXmsoN2IrMEs6OT9Ce2wzSiMyUigkLEBVWEVYKDRdO3BCezNKMl5AMVpueFlqQmIsSE9YRXVseV1PJENebUFaMXZqUztnfW90ZG1yeUBUTnpydnVIO285UlFQfVQ2RDliMUc9QU9KUi9hQ21JMSQoeno/cSNEZls6JDAtNilzSC9GVUpXWS19dltuZGZzTVF7OFgpQUMqQVc0RyxsMFNBcUZjIU1obW9jI18wZU5IUzc1bmpbcnVaUUZBeUNQRkJKSE1NP3QtX19XclQwJC0hPVU4Yj1MQEx6O2p1WGc9MERsNEx2QlBoT0BOdDhNVnlLRF4wXkNBb283N2xaPzF4ZlJbdnM9QVU3Y05vZDctJV1iRTArdW49KUtoL3UpOlk5RVRFTGdhYSN2Yypha1FvXkFjTT9wTHNDfXFsbFs6ekxLcmc/SkAxSnk0ZTlTPyo2YzohaFhbMnJlelUzei9KKzoye2FIWzJZK3ZIR05UWjFTenlpZFdUbC1BK24lY2xtem12UGdIcy8ydnRrUEQoMjJWdi4zPWRdK05IYSNNQDZjIUFkdWo6ZFhfJW1kUnlQOilSVUZfW11RPSRfOF9KJUlxZzlePC9jZWZza2luPgo8L0Zvcm1EYXRhPgo="
 
-local wdt = io.open(os.getenv("temp").."/f.FRM","w")
+local wdt = io.open(os.getenv("temp").."/ceskin.FRM","w")
 fdata=base64_decode(fdata)
 wdt:write(fdata)
 wdt:close()
 
-ceskin =  createFormFromFile(os.getenv("temp").."/f.FRM")
+ceskin =  createFormFromFile(os.getenv("temp").."/ceskin.FRM")
 ceskin.show()
 skins = {}
 skins.id = 0
@@ -929,4 +929,7 @@ function UDF1_addcompClick(sender)
             closeFormDesigner()
             MainForm.miTable[getFormIndexByName(ceskin.formlist.text)][1].doClick()
          end
+end
+function UDF1_MenuItem2Click(sender)
+   showMessage("Created by Lynxz Gaming, github : adhptrh/cefskin")
 end

@@ -525,7 +525,7 @@ skins.components[2].checkbox = function(fn)
             ]]..fn.name..".cbboxsdb"..rand..[[.wordwrap = true
             gotoColor2(]]..fn.name..".cbboxsdb"..rand..[[,{113,140,236},20)
          else
-            sender.wordwrap = false
+            ]]..fn.name..[[.wordwrap = false
             gotoColor2(]]..fn.name..".cbboxsdb"..rand..[[,{30,30,30},20)
          end
 end]]

@@ -11,7 +11,7 @@ ceskin =  createFormFromFile(os.getenv("temp").."/ceskin.FRM")
 ceskin.show()
 skins = {}
 skins.id = 0
-skins.idd = tostring(math.random(0,9))
+skins.idd = "d"..tostring(math.random(1,9999))
 skins.names = {}
 skins.names[0] = "Flat Purple"
 skins.names[1] = "Dark Bluish"
@@ -20,10 +20,14 @@ skins.names[2] = "Smooth Dark-Blue"
 skins.components = {}
 skins.formskin = {}
 
+function generateId()
+   skins.id = skins.id+1
+   return skins.id..skins.idd
+end
+
 skins.components[0] = {}
 skins.components[0].button = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function pfbutton_down]]..rand..[[(sender, button, x, y)
 sender.color = 0xD36F70
@@ -48,8 +52,7 @@ end]]
 
 end
 skins.components[0].editbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["editpanel"..rand] = createPanel(fn)
    _ENV["editpanel"..rand].name = "editpanel"..rand
    _ENV["editpanel"..rand].alignment = "taLeftJustify"
@@ -79,8 +82,7 @@ skins.components[0].editbox = function(fn)
    _ENV["editbox"..rand].text = "Editbox"
 end
 skins.components[0].checkbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function cbmousedown]]..rand..[[(sender, button, x, y)
 if ]]..fn.name..[[.cbbox]]..rand..[[.wordwrap == false then
@@ -122,8 +124,7 @@ end]]
    _ENV["cblabel"..rand].onmousedown = "cbmousedown"..rand
 end
 skins.components[0].listbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["lbpanel"..rand] = createPanel(fn)
    _ENV["lbpanel"..rand].name = "lbpanel"..rand
    _ENV["lbpanel"..rand].caption = ""
@@ -145,8 +146,7 @@ skins.components[0].listbox = function(fn)
    _ENV["lbox"..rand].setParent(_ENV["lbpanel"..rand])
 end
 skins.components[0].memo = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["memopanel"..rand] = createPanel(fn)
    _ENV["memopanel"..rand].name = "memopanel"..rand
    _ENV["memopanel"..rand].caption = ""
@@ -170,8 +170,7 @@ skins.components[0].memo = function(fn)
 end
 
 skins.formskin[0] = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
 
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function formdrag]]..rand..[[()
@@ -232,8 +231,7 @@ end
 
 skins.components[1] = {}
 skins.components[1].button = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function btndb_mousedown]]..rand..[[(sender,button,x,y)
 sender.color = 0x3D3129
@@ -265,8 +263,7 @@ end]]
    _ENV["buttondb"..rand].onmouseleave = "btndb_mouseleave"..rand
 end
 skins.components[1].editbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["editpaneldb"..rand] = createPanel(fn)
    _ENV["editpaneldb"..rand].name = "editpaneldb"..rand
    _ENV["editpaneldb"..rand].color = 0x322921
@@ -291,8 +288,7 @@ skins.components[1].editbox = function(fn)
 
 end
 skins.components[1].checkbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function cbmousedowndb]]..rand..[[(sender, button, x, y)
 if ]]..fn.name..[[.cbboxdb]]..rand..[[.wordwrap == false then
@@ -335,8 +331,7 @@ end]]
 
 end
 skins.components[1].listbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["lbpaneldb"..rand] = createPanel(fn)
    _ENV["lbpaneldb"..rand].name = "lbpaneldb"..rand
    _ENV["lbpaneldb"..rand].caption = ""
@@ -358,8 +353,7 @@ skins.components[1].listbox = function(fn)
    _ENV["lboxdb"..rand].setParent(_ENV["lbpaneldb"..rand])
 end
 skins.components[1].memo = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    _ENV["memopaneldb"..rand] = createPanel(fn)
    _ENV["memopaneldb"..rand].name = "memopaneldb"..rand
    _ENV["memopaneldb"..rand].caption = ""
@@ -383,8 +377,7 @@ skins.components[1].memo = function(fn)
 end
 
 skins.formskin[1] = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function formdrag]]..rand..[[()
 ]]..fn.name..[[.dragNow()
@@ -458,8 +451,7 @@ end
 
 skins.components[2] = {}
 skins.components[2].button = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function btnsdb_mousedown]]..rand..[[(sender,button,x,y)
          gotoColor1(sender,{113,140,236},20)
@@ -484,8 +476,7 @@ end]]
    _ENV["buttonsdb"..rand].onmouseup = "btnsdb_mouseup"..rand
 end
 skins.components[2].editbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function ceeditsdb_enter]]..rand..[[(sender)
          gotoColor1(]]..fn.name..[[.editpanelsdb]]..rand..[[,{113,140,236},15)
@@ -518,8 +509,7 @@ end]]
    _ENV["editboxsdb"..rand].text = "Editbox"
 end
 skins.components[2].checkbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function cbmousedownsdb]]..rand..[[(sender, button, x, y)
          if ]]..fn.name..".cbboxsdb"..rand..[[.wordwrap == false then
@@ -563,8 +553,7 @@ end]]
    _ENV["cblabelsdb"..rand].onmousedown = "cbmousedownsdb"..rand
 end
 skins.components[2].listbox = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
       MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function enterlbsdb]]..rand..[[()
          gotoColor1(]]..fn.name..[[.lbpanelsdb]]..rand..[[,{113,140,236},15)
@@ -595,8 +584,7 @@ end]]
    _ENV["lboxsdb"..rand].setParent(_ENV["lbpanelsdb"..rand])
 end
 skins.components[2].memo = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
          MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function entermemosdb]]..rand..[[()
          gotoColor1(]]..fn.name..[[.memopanelsdb]]..rand..[[,{113,140,236},15)
@@ -628,8 +616,7 @@ end]]
    _ENV["memosdb"..rand].setParent(_ENV["memopanelsdb"..rand])
 end
 skins.components[2].pagecontrol = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
             MainForm.frmAutoInject.assemblescreen.lines.text =MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[function pgmenu1sdb_mdown]]..rand..[[(sender, button, x, y)
          ]]..fn.name..[[.pgmenu1sdb]]..rand..[[.color = 0xEC8C71
@@ -740,8 +727,7 @@ end]]
 end
 
 skins.formskin[2] = function(fn)
-   skins.id = skins.id+1
-   rand = skins.id
+   rand = generateId()
    MainForm.frmAutoInject.assemblescreen.lines.text = MainForm.frmAutoInject.assemblescreen.lines.text .. "\n" ..
 [[
 function hexToRGB(hex)

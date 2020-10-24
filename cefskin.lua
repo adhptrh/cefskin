@@ -11,6 +11,7 @@ ceskin =  createFormFromFile(os.getenv("temp").."/ceskin.FRM")
 ceskin.show()
 skins = {}
 skins.id = 0
+skins.idd = tostring(math.random(0,9))
 skins.names = {}
 skins.names[0] = "Flat Purple"
 skins.names[1] = "Dark Bluish"

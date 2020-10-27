@@ -12,6 +12,7 @@ ceskin.show()
 skins = {}
 skins.id = 0
 skins.idd = "d"..tostring(math.random(1,9999))
+skins.idd = "d"..tostring(math.random(1,9999))
 skins.names = {}
 skins.names[0] = "Flat Purple"
 skins.names[1] = "Dark Bluish"
